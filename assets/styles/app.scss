@@ -1,5 +1,22 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-    background-color: coral;
+    background-color: white;
+}
+
+header {
+    background-color: black !important;
+}
+
+.navbar ul li a {
+    color: white !important;
+}
+
+.navbar-toggler-icon {
+    background-color: white !important;
+}
+
+.logo {
+    height: 100px !important;
+    width: 100px !important;
 }
