@@ -29,7 +29,7 @@ class CategoryController extends AbstractController
                 'Category ' . $categoryName . ' doesn\'t exist.'
             );
         }
-        $programs = $programRepository->findBy(['category' => $category->getId()], ['id' => 'ASC'], 3, 0);
+        $programs = $programRepository->findBy(['category' => $category->getId()], ['id' => 'DESC'], 3, 0);
 
         return $this->render('category/show.html.twig', [
             'category' => $category,

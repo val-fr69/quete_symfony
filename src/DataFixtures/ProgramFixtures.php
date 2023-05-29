@@ -11,11 +11,11 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
 
     public const PROGRAMS = [
-        ['title' => 'Avatar: The Way of Water', 'synopsis' => 'Jake Sully and Neytiri have become parents.', 'category' => 'Action'],
-        ['title' => 'Uncharted', 'synopsis' => 'Nathan Drake is recruited to find the fortune of Ferdinand Magellan.', 'category' => 'Aventure'],
-        ['title' => 'The Super Mario Bros', 'synopsis' => 'Mario goes in search of his brother Luigi, who has been captured by their enemy Bowser.', 'category' => 'Animation'],
-        ['title' => 'Teen Wolf: The Movie', 'synopsis' => 'Fifteen years after leaving Beacon Hills, Scott McCall runs an animal shelter in Los Angeles.', 'category' => 'Fantastique'],
-        ['title' => 'Scream', 'synopsis' => 'Twenty-five years after the peaceful town of Woodsboro was hit by a series of brutal murders.s', 'category' => 'Horreur'],
+        ['title' => 'Black Knight', 'synopsis' => 'En 2071, le monde a été ravagé par la pollution de l\'air. La survie de l\'humanité dépend de livreurs atypiques surnommés les "chevaliers noirs"', 'country' => 'Corée du Sud', 'year' => '2023', 'category' => 'Action'],
+        ['title' => 'OnePiece', 'synopsis' => 'Monkey D.Luffy cherche à devenir le nouveau roi des Pirates et retrouver le fameux OnePiece ! ', 'country' => 'Japon', 'year' => '1999', 'category' => 'Aventure'],
+        ['title' => 'DemonSlayer', 'synopsis' => 'Tanjiro rejoint les pourfendeurs et part à la recherche des lunes supérieurs pour venger sa famille', 'country' => 'Japon', 'year' => '2019', 'category' => 'Animation'],
+        ['title' => 'Game of Thrones', 'synopsis' => 'Après un été de dix années, un hiver rigoureux s\'abat sur le Royaume avec la promesse d\'un avenir des plus sombres. Pendant ce temps, complots et rivalités se jouent sur le continent pour s\'emparer du Trône de Fer, le symbole du pouvoir absolu.', 'country' => 'Etats-Unis', 'year' => '2011', 'category' => 'Fantastique'],
+        ['title' => 'The Walking Dead', 'synopsis' => 'L histoire suit les aventures du shériff Rick Grimes, qui se réveille après à un coma au milieu d une envahison de zombies', 'country' => 'Etats-Unis', 'year' => '2010', 'category' => 'Horreur'],
     ];
 
     public function load(ObjectManager $manager)
@@ -24,7 +24,10 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program = new Program();
             $program->setTitle($movie['title']);
             $program->setSynopsis($movie['synopsis']);
+            $program->setCountry($movie['country']);
+            $program->setYear($movie['year']);
             $program->setCategory($this->getReference('category_' . $movie['category']));
+            $this->addReference('program_' . $movie['title'], $program);
             $manager->persist($program);
         }
         $manager->flush();
